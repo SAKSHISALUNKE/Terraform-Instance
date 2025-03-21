@@ -1,0 +1,10 @@
+resource "aws_instance" "web_server" {
+  count         = 3 # Number of instances to deploy
+  ami           = "ami-0e35ddab05955cf57"
+  instance_type = var.instance_type
+  key_name      = var.key_name
+
+  tags = {
+    Name = "WebServer-${count.index + 1}"
+  }
+}
